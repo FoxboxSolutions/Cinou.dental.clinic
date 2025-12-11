@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { Testimonial } from '../types';
+import RevealOnScroll from './RevealOnScroll';
 
 const reviews: Testimonial[] = [
   {
@@ -58,7 +59,7 @@ const Testimonials: React.FC = () => {
   return (
     <section id="testimonials" className="py-24 bg-[#f9f5ff] scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center text-center mb-16">
+        <RevealOnScroll className="flex flex-col items-center justify-center text-center mb-16">
           <div className="flex items-center gap-2 mb-4 bg-white px-6 py-2 rounded-full shadow-sm border border-gray-100">
              <GoogleIcon />
              <span className="font-bold text-gray-700">Avis Google</span>
@@ -71,36 +72,38 @@ const Testimonials: React.FC = () => {
           </div>
           <h2 className="text-[#9b00ff] font-bold tracking-wide uppercase text-sm mb-3">Témoignages</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-gray-900">Ils nous font confiance</h3>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {reviews.map((review) => (
-            <div key={review.id} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <img src={review.image} alt={review.name} className="w-10 h-10 rounded-full object-cover border border-gray-100" />
-                <div>
-                  <h5 className="font-bold text-gray-900 text-sm">{review.name}</h5>
-                  <div className="flex gap-0.5">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} size={12} className="text-yellow-400 fill-yellow-400" />
-                    ))}
+          {reviews.map((review, index) => (
+            <RevealOnScroll key={review.id} delay={index * 100} className="h-full">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <img src={review.image} alt={review.name} className="w-10 h-10 rounded-full object-cover border border-gray-100" />
+                  <div>
+                    <h5 className="font-bold text-gray-900 text-sm">{review.name}</h5>
+                    <div className="flex gap-0.5">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} size={12} className="text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
                   </div>
+                  <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
+                      alt="Google" 
+                      className="w-5 h-5 ml-auto opacity-80"
+                  />
                 </div>
-                <img 
-                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
-                    alt="Google" 
-                    className="w-5 h-5 ml-auto opacity-80"
-                />
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">"{review.content}"</p>
+                <div className="text-xs text-gray-400 font-medium">
+                    {review.date}
+                </div>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">"{review.content}"</p>
-              <div className="text-xs text-gray-400 font-medium">
-                  {review.date}
-              </div>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <RevealOnScroll delay={300} className="text-center mt-12">
             <a 
                 href="https://share.google/U4vui0bl4VeFK0Krx" 
                 target="_blank" 
@@ -110,7 +113,7 @@ const Testimonials: React.FC = () => {
                 <GoogleIcon />
                 Voir tous les avis sur Google
             </a>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

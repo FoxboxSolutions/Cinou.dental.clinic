@@ -1,21 +1,22 @@
 import React from 'react';
 import { Target, Heart, ShieldCheck } from 'lucide-react';
+import RevealOnScroll from './RevealOnScroll';
 
 const About: React.FC = () => {
   return (
     <section id="about" className="py-24 bg-white scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative">
+          <RevealOnScroll className="relative">
             <img 
               src="https://i.ibb.co/jkD8wRn7/467182615-582758860818180-4542843246712821394-n.jpg" 
               alt="Équipe Cinou Clinic" 
               className="rounded-3xl shadow-xl w-full object-cover h-[500px]"
             />
             <div className="absolute inset-0 bg-purple-900/10 rounded-3xl"></div>
-          </div>
+          </RevealOnScroll>
           
-          <div>
+          <RevealOnScroll delay={200}>
             <h2 className="text-[#9b00ff] font-bold tracking-wide uppercase text-sm mb-3">À propos de nous</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Une vision moderne de la dentisterie</h3>
             <p className="text-gray-600 leading-relaxed mb-8">
@@ -53,7 +54,7 @@ const About: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </div>
     </section>

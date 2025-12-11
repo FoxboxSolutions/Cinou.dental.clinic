@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CaseStudy } from '../types';
+import RevealOnScroll from './RevealOnScroll';
 
 const cases: CaseStudy[] = [
   { 
@@ -8,7 +9,7 @@ const cases: CaseStudy[] = [
     image: 'https://i.ibb.co/ksyxPbNQ/467466657-582764247484308-7498945405611680464-n.jpg', 
     title: 'Implant Complet',
     description: "Restauration complète de la dentition avec des implants de dernière génération. Le patient a retrouvé une fonction masticatoire parfaite et un sourire esthétique.",
-    duration: '6 mois',
+    duration: '6 séances',
     painLevel: 'Modérée (sous anesthésie)'
   },
   { 
@@ -26,6 +27,14 @@ const cases: CaseStudy[] = [
     description: "Pose de facettes pour corriger la forme et la teinte des dents. Un sourire hollywoodien sur mesure, conçu pour durer.",
     duration: '2 séances',
     painLevel: 'Minime'
+  },
+  {
+    id: 4,
+    image: 'https://i.ibb.co/1Gy51jTN/image.png',
+    title: 'Orthodontie (ODF)',
+    description: "Traitement orthodontique complet pour l'alignement dentaire et la correction de l'occlusion. Un sourire transformé et harmonieux grâce à un suivi rigoureux.",
+    duration: '24 mois',
+    painLevel: 'Légère (ajustements)'
   }
 ];
 
@@ -38,7 +47,7 @@ const Gallery: React.FC = () => {
   return (
     <section id="gallery" className="py-24 bg-white scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+        <RevealOnScroll className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="max-w-xl">
             <h2 className="text-[#9b00ff] font-bold tracking-wide uppercase text-sm mb-3">Réalisations</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900">Résultats Cliniques</h3>
@@ -52,9 +61,9 @@ const Gallery: React.FC = () => {
               <ChevronRight size={24} />
             </button>
           </div>
-        </div>
+        </RevealOnScroll>
 
-        <div className="relative overflow-hidden rounded-3xl bg-gray-50 border border-gray-100 shadow-lg">
+        <RevealOnScroll delay={200} className="relative overflow-hidden rounded-3xl bg-gray-50 border border-gray-100 shadow-lg">
           <div className="grid md:grid-cols-2">
              {/* Image Side */}
              <div className="relative h-[300px] md:h-[500px]">
@@ -90,7 +99,7 @@ const Gallery: React.FC = () => {
                 </div>
              </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

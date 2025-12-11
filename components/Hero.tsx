@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, MessageCircle } from 'lucide-react';
+import RevealOnScroll from './RevealOnScroll';
 
 const Hero: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://i.ibb.co/wF7Zs6SG/470672864-603895628704503-8690754726514460492-n.jpg" 
-          alt="Cabinet dentaire moderne" 
+          alt="Cabinet Cinou Dental Clinic" 
           className="w-full h-full object-cover opacity-40" 
         />
         <div className="absolute inset-0 bg-gradient-to-r from-purple-50/90 to-white/50" />
@@ -16,7 +17,7 @@ const Hero: React.FC = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
         {/* Content */}
-        <div className="space-y-6">
+        <RevealOnScroll className="space-y-6">
           <div className="inline-block px-4 py-1 bg-purple-100 text-[#9b00ff] rounded-full text-xs font-bold tracking-widest uppercase mb-2">
             Cabinet Dentaire Premium
           </div>
@@ -46,14 +47,14 @@ const Hero: React.FC = () => {
               Contact WhatsApp
             </a>
           </div>
-        </div>
+        </RevealOnScroll>
 
         {/* Visual Element */}
-        <div className="relative hidden md:block">
+        <RevealOnScroll delay={200} className="relative hidden md:block">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img 
-                    src="https://picsum.photos/600/700" 
-                    alt="Sourire éclatant" 
+                    src="https://i.ibb.co/Fq8ZJGQJ/2025-04-05.jpg" 
+                    alt="Clinic Cinou dental" 
                     className="w-full h-full object-cover"
                 />
             </div>
@@ -69,7 +70,7 @@ const Hero: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

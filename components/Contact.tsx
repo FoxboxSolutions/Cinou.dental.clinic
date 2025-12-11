@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Mail, Clock } from 'lucide-react';
+import RevealOnScroll from './RevealOnScroll';
 
 const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -18,7 +19,7 @@ const Contact: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Info Side */}
-          <div>
+          <RevealOnScroll>
              <h2 className="text-[#9b00ff] font-bold tracking-wide uppercase text-sm mb-3">Contact</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Prenez rendez-vous dès aujourd'hui</h3>
             <p className="text-gray-600 mb-8">
@@ -67,10 +68,10 @@ const Contact: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {/* Form Side */}
-          <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+          <RevealOnScroll delay={200} className="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
             {formStatus === 'success' ? (
               <div className="h-full flex flex-col items-center justify-center text-center">
                 <div className="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-4">
@@ -118,7 +119,7 @@ const Contact: React.FC = () => {
                 </button>
               </form>
             )}
-          </div>
+          </RevealOnScroll>
         </div>
       </div>
     </section>

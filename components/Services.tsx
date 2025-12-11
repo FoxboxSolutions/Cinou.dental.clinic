@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, HeartPulse, Layers, Sparkles, ShieldPlus, Sun, Scan, Smile } from 'lucide-react';
 import { Service } from '../types';
+import RevealOnScroll from './RevealOnScroll';
 
 const servicesData: Service[] = [
   {
@@ -48,9 +49,9 @@ const servicesData: Service[] = [
   {
     id: 'odf',
     title: 'ODF (Orthodontie)',
-    description: 'Correction de l\'alignement dentaire pour enfants et adultes (Orthodontie Dento-Faciale). Des bagues traditionnelles aux aligneurs invisibles, nous redressons vos dents pour une fonction et une esthétique parfaites.',
+    description: 'Correction de l\'alignement dentaire pour enfants et adultes. Nous proposons des solutions modernes pour redresser vos dents et harmoniser votre occlusion.',
     icon: <Smile size={32} />,
-    benefits: ['Alignement parfait', 'Solutions invisibles', 'Prévention fonctionnelle']
+    benefits: ['Alignement parfait', 'Solutions invisibles', 'Suivi personnalisé']
   }
 ];
 
@@ -58,36 +59,35 @@ const Services: React.FC = () => {
   return (
     <section id="services" className="py-24 bg-gray-50 scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-[#9b00ff] font-bold tracking-wide uppercase text-sm mb-3">Nos Expertises</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Une offre de soins complète</h3>
+        <RevealOnScroll className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-[#9b00ff] font-bold tracking-wide uppercase text-sm mb-3">Nos Services</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Une gamme complète de soins pour toute la famille</h3>
           <p className="text-gray-600">
-            Du diagnostic radiologique à la réhabilitation complète du sourire, Cinou Dental Clinic maîtrise l'ensemble des disciplines dentaires modernes pour votre santé.
+            De la prévention aux réhabilitations complexes, nous couvrons l'ensemble des spécialités dentaires sous un même toit.
           </p>
-        </div>
+        </RevealOnScroll>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
-          {servicesData.map((service) => (
-            <div key={service.id} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 group w-full h-full flex flex-col">
-              <div className="w-14 h-14 bg-purple-50 text-[#9b00ff] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#9b00ff] group-hover:text-white transition-colors duration-300">
-                {service.icon}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicesData.map((service, index) => (
+            <RevealOnScroll key={service.id} delay={index * 100} className="h-full">
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col group">
+                <div className="bg-purple-50 w-16 h-16 rounded-2xl flex items-center justify-center text-[#9b00ff] mb-6 group-hover:bg-[#9b00ff] group-hover:text-white transition-colors">
+                  {service.icon}
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h4>
+                <p className="text-gray-600 mb-6 flex-1 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+                <ul className="space-y-2 border-t border-gray-100 pt-6">
+                  {service.benefits.map((benefit, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-sm text-gray-500 font-medium">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h4>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">{service.description}</p>
-              
-              <ul className="space-y-2 mb-6">
-                {service.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center text-xs text-gray-500 font-medium">
-                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></div>
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-
-              <a href="#contact" className="inline-flex items-center text-[#9b00ff] font-semibold text-sm hover:underline mt-auto">
-                Prendre rendez-vous <ArrowRight size={16} className="ml-1" />
-              </a>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
